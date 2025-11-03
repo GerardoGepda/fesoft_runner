@@ -1,0 +1,156 @@
+{
+  "identificacion": {
+    "version": 3,
+    "ambiente": "00",
+    "tipoDte": "03",
+    "numeroControl": null,
+    "codigoGeneracion": null,
+    "tipoModelo": 1,
+    "tipoOperacion": 1,
+    "tipoContingencia": null,
+    "motivoContin": null,
+    "fecEmi": null,
+    "horEmi": null,
+    "tipoMoneda": "USD"
+  },
+  "documentoRelacionado": null,
+  "emisor": {
+    "nit": null,
+    "nrc": null,
+    "descActividad": null,
+    "codActividad": null,
+    "nombre": null,
+    "nombreComercial": null,
+    "tipoEstablecimiento": "01",
+    "direccion": {
+      "departamento": null,
+      "municipio": null,
+      "complemento": "DIRECCION"
+    },
+    "telefono": "22222222",
+    "correo": "facturacionelectronica@example.com.sv",
+    "codEstableMH": null,
+    "codEstable": null,
+    "codPuntoVentaMH": null,
+    "codPuntoVenta": null
+  },
+  "receptor": {
+    "nit": null,
+    "nrc": null,
+    "nombre": null,
+    "codActividad": null,
+    "descActividad": null,
+    "nombreComercial": null,
+    "direccion": {
+      "departamento": null,
+      "municipio": null,
+      "complemento": "direccion receptor"
+    },
+    "telefono": "77777777",
+    "correo": "pruebas@example.com"
+  },
+  "otrosDocumentos": null,
+  "ventaTercero": null,
+  "cuerpoDocumento": [
+    {
+      "numItem": 1,
+      "tipoItem": 1,
+      "numeroDocumento": null,
+      "codigo": "A00001",
+      "codTributo": null,
+      "descripcion": "PRODUCTO 1",
+      "cantidad": 2,
+      "uniMedida": 59,
+      "precioUni": 6.5929,
+      "montoDescu": 0,
+      "ventaNoSuj": 0,
+      "ventaExenta": 0,
+      "ventaGravada": 13.1858,
+      "tributos": [
+        "20"
+      ],
+      "psv": 0,
+      "noGravado": 0
+    },
+    {
+      "numItem": 2,
+      "tipoItem": 1,
+      "numeroDocumento": null,
+      "codigo": "B00001",
+      "codTributo": null,
+      "descripcion": "PRODUCTO 2",
+      "cantidad": 2,
+      "uniMedida": 59,
+      "precioUni": 1.3274,
+      "montoDescu": 0,
+      "ventaNoSuj": 0,
+      "ventaExenta": 0,
+      "ventaGravada": 2.6549,
+      "tributos": [
+        "20"
+      ],
+      "psv": 0,
+      "noGravado": 0
+    },
+    {
+      "numItem": 3,
+      "tipoItem": 1,
+      "numeroDocumento": null,
+      "codigo": "C00001",
+      "codTributo": null,
+      "descripcion": "PRODUCTO 3",
+      "cantidad": 2,
+      "uniMedida": 59,
+      "precioUni": 0,
+      "montoDescu": 0,
+      "ventaNoSuj": 0,
+      "ventaExenta": 0,
+      "ventaGravada": 0,
+      "tributos": [
+        "20"
+      ],
+      "psv": 0,
+      "noGravado": 0
+    }
+  ],
+  "resumen": {
+    "totalNoSuj": 0,
+    "totalExenta": 0,
+    "totalGravada": 15.84,
+    "totalNoGravado": 0,
+    "subTotalVentas": 15.84,
+    "descuNoSuj": 0,
+    "descuExenta": 0,
+    "descuGravada": 0,
+    "porcentajeDescuento": 0,
+    "totalDescu": 0,
+    "tributos": [
+      {
+        "codigo": "20",
+        "descripcion": "Impuesto al Valor Agregado 13%",
+        "valor": 2.06
+      }
+    ],
+    "subTotal": 15.84,
+    "ivaPerci1": 0,
+    "ivaRete1": 0,
+    "reteRenta": 0,
+    "montoTotalOperacion": 17.9,
+    "totalPagar": 17.9,
+    "totalLetras": "DIECISIETE DOLAR/ES 90/100",
+    "saldoFavor": 0,
+    "condicionOperacion": 1,
+    "pagos": [
+      {
+        "codigo": "02",
+        "montoPago": 17.9,
+        "referencia": "Tarjeta",
+        "plazo": null,
+        "periodo": null
+      }
+    ],
+    "numPagoElectronico": null
+  },
+  "extension": null,
+  "apendice": null
+}
