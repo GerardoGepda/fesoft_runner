@@ -1,0 +1,83 @@
+{
+    "identificacion": {
+        "version": 1,
+        "ambiente": "00",
+        "tipoDte": "14",
+        "numeroControl": null,
+        "codigoGeneracion": null,
+        "tipoModelo": 1,
+        "tipoOperacion": 1,
+        "tipoContingencia": null,
+        "motivoContin": null,
+        "fecEmi": null,
+        "horEmi": null,
+        "tipoMoneda": "USD"
+    },
+    "emisor": {
+        "nit": null,
+        "nrc": null,
+        "descActividad": null,
+        "codActividad": null,
+        "nombre": null,
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "DIRECCION"
+        },
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com.sv",
+        "codEstableMH": null,
+        "codEstable": null,
+        "codPuntoVentaMH": null,
+        "codPuntoVenta": null
+    },
+    "sujetoExcluido": {
+        "tipoDocumento": "37",
+        "numDocumento": "12345678",
+        "nombre": "CLIENTE DE PRUEBA",
+        "codActividad": null,
+        "descActividad": null,
+        "direccion": {
+            "departamento": "06",
+            "municipio": "23",
+            "complemento": "Direccion..."
+        },
+        "telefono": null,
+        "correo": "cliente@example.com.sv"
+    },
+    "cuerpoDocumento": [
+        {
+            "numItem": 1,
+            "tipoItem": 2,
+            "cantidad": 1,
+            "codigo": null,
+            "uniMedida": 99,
+            "descripcion": "SERVICIO 1",
+            "precioUni": 20,
+            "montoDescu": 0,
+            "compra": 20
+        }
+    ],
+    "resumen": {
+        "totalCompra": 20,
+        "descu": 0,
+        "totalDescu": 0,
+        "subTotal": 20,
+        "ivaRete1": 0,
+        "reteRenta": 0,
+        "totalPagar": 20,
+        "totalLetras": "VEINTE DOLAR/ES ",
+        "condicionOperacion": 2,
+        "pagos": [
+            {
+                "montoPago": 20,
+                "codigo": "05",
+                "referencia": "Transferencia Bancaria",
+                "plazo": "01",
+                "periodo": 15
+            }
+        ],
+        "observaciones": null
+    },
+    "apendice": null
+}

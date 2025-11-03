@@ -1,6 +1,6 @@
 import readline from 'readline';
 import login from './login.js';
-import { ccfTest, facturaTest } from './documents.js';
+import { ccfTest, facturaExportacionTest, facturaTest, notaCreditoTest, notaDebitoTest, sujetoExcluidoTest } from './documents.js';
 
 // Configurar interfaz de readline para entrada de usuario
 const rl = readline.createInterface({
@@ -90,12 +90,7 @@ async function pruebasNotaCredito() {
         nombre: 'Nota de Crédito'
     };
     
-    // Función temporal hasta implementar notaCreditoTest
-    const notaCreditoTest = async (token, numeroIteracion) => {
-        return `Nota de Crédito ${numeroIteracion} - Funcionalidad pendiente de implementar`;
-    };
-    
-    await ejecutarPruebas(tipoDocumento, notaCreditoTest, false);
+    await ejecutarPruebas(tipoDocumento, notaCreditoTest, true);
 }
 
 async function pruebasNotaDebito() {
@@ -104,12 +99,7 @@ async function pruebasNotaDebito() {
         nombre: 'Nota de Débito'
     };
     
-    // Función temporal hasta implementar notaDebitoTest
-    const notaDebitoTest = async (token, numeroIteracion) => {
-        return `Nota de Débito ${numeroIteracion} - Funcionalidad pendiente de implementar`;
-    };
-    
-    await ejecutarPruebas(tipoDocumento, notaDebitoTest, false);
+    await ejecutarPruebas(tipoDocumento, notaDebitoTest, true);
 }
 
 async function pruebasComprobanteRetencion() {
@@ -132,12 +122,7 @@ async function pruebasFacturaExportacion() {
         nombre: 'Factura de Exportación'
     };
     
-    // Función temporal hasta implementar facturaExportacionTest
-    const facturaExportacionTest = async (token, numeroIteracion) => {
-        return `Factura de Exportación ${numeroIteracion} - Funcionalidad pendiente de implementar`;
-    };
-    
-    await ejecutarPruebas(tipoDocumento, facturaExportacionTest, false);
+    await ejecutarPruebas(tipoDocumento, facturaExportacionTest, true);
 }
 
 async function pruebasSujetosExcluidos() {
@@ -146,12 +131,7 @@ async function pruebasSujetosExcluidos() {
         nombre: 'Sujetos Excluidos'
     };
     
-    // Función temporal hasta implementar sujetosExcluidosTest
-    const sujetosExcluidosTest = async (token, numeroIteracion) => {
-        return `Sujetos Excluidos ${numeroIteracion} - Funcionalidad pendiente de implementar`;
-    };
-    
-    await ejecutarPruebas(tipoDocumento, sujetosExcluidosTest, false);
+    await ejecutarPruebas(tipoDocumento, sujetoExcluidoTest, true);
 }
 
 async function pruebasAnulaciones() {

@@ -1,0 +1,104 @@
+{
+    "identificacion": {
+        "version": 3,
+        "ambiente": "00",
+        "tipoDte": "05",
+        "numeroControl": null,
+        "codigoGeneracion": null,
+        "fecEmi": null,
+        "horEmi": null,
+        "tipoMoneda": "USD",
+        "tipoModelo": 1,
+        "tipoOperacion": 1,
+        "tipoContingencia": null,
+        "motivoContin": null
+    },
+    "documentoRelacionado": [
+        {
+            "tipoDocumento": "03",
+            "tipoGeneracion": 1,
+            "numeroDocumento": null,
+            "fechaEmision": null
+        }
+    ],
+    "emisor": {
+        "nit": null,
+        "nrc": null,
+        "descActividad": null,
+        "codActividad": null,
+        "nombre": null,
+        "nombreComercial": null,
+        "tipoEstablecimiento": "01",
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "DIRECCION"
+        },
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com.sv",
+        "codEstableMH": null,
+        "codPuntoVentaMH": null
+    },
+    "receptor": {
+        "nit": null,
+        "nrc": null,
+        "nombre": null,
+        "codActividad": null,
+        "descActividad": null,
+        "nombreComercial": null,
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "direccion receptor"
+        },
+        "telefono": "77777777",
+        "correo": "pruebas@example.com"
+    },
+    "ventaTercero": null,
+    "cuerpoDocumento": [
+        {
+            "numItem": 1,
+            "tipoItem": 1,
+            "numeroDocumento": null,
+            "codigo": "1",
+            "codTributo": null,
+            "descripcion": "PRODUCTO 1",
+            "cantidad": 2,
+            "uniMedida": 59,
+            "precioUni": 1.33,
+            "montoDescu": 0,
+            "ventaNoSuj": 0,
+            "ventaExenta": 0,
+            "ventaGravada": 2.65,
+            "tributos": [
+                "20"
+            ]
+        }
+    ],
+    "resumen": {
+        "totalNoSuj": 0,
+        "totalExenta": 0,
+        "totalGravada": 2.65,
+        "subTotalVentas": 2.65,
+        "descuNoSuj": 0,
+        "descuExenta": 0,
+        "descuGravada": 0,
+        "totalDescu": 0,
+        "tributos": [
+            {
+                "codigo": "20",
+                "descripcion": "Impuesto al Valor Agregado 13%",
+                "valor": 0.35
+            }
+        ],
+        "subTotal": 2.65,
+        "ivaRete1": 0,
+        "reteRenta": 0,
+        "montoTotalOperacion": 3,
+        "totalLetras": "TRES DÓLARES",
+        "condicionOperacion": 1,
+        "ivaPerci1": 0
+    },
+    "extension": null,
+    "apendice": null
+}

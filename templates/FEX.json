@@ -1,0 +1,97 @@
+{
+    "identificacion": {
+        "version": 1,
+        "ambiente": "00",
+        "tipoDte": "11",
+        "numeroControl": null,
+        "codigoGeneracion": null,
+        "tipoModelo": 1,
+        "tipoOperacion": 1,
+        "tipoContingencia": null,
+        "motivoContigencia": null,
+        "fecEmi": null,
+        "horEmi": null,
+        "tipoMoneda": "USD"
+    },
+    "emisor": {
+        "nit": null,
+        "nrc": null,
+        "descActividad": null,
+        "codActividad": null,
+        "nombre": null,
+        "nombreComercial": null,
+        "tipoEstablecimiento": "01",
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "DIRECCION"
+        },
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com.sv",
+        "codEstableMH": null,
+        "codPuntoVentaMH": null,
+        "codEstable": null,
+        "codPuntoVenta": null,
+        "tipoItemExpor": 2,
+        "recintoFiscal": null,
+        "regimen": null
+    },
+    "receptor": {
+        "nombre": "CLIENTE PRUEBA",
+        "tipoDocumento": "37",
+        "numDocumento": "12345678",
+        "nombreComercial": null,
+        "codPais": "9411",
+        "nombrePais": "COSTA RICA",
+        "complemento": "200 Este y 125 Norte de la iglesia católica, frente aptos. La Esmeralda.",
+        "tipoPersona": 1,
+        "descActividad": "Otros",
+        "telefono": "50677777777",
+        "correo": "cliente@example.com"
+    },
+    "otrosDocumentos": null,
+    "ventaTercero": null,
+    "cuerpoDocumento": [
+        {
+            "numItem": 1,
+            "cantidad": 1,
+            "codigo": "A00001",
+            "uniMedida": 59,
+            "descripcion": "SERVICIO EXPORTADO 1",
+            "precioUni": 52.2,
+            "montoDescu": 0,
+            "ventaGravada": 52.2,
+            "tributos": [
+                "C3"
+            ],
+            "noGravado": 0
+        }
+    ],
+    "resumen": {
+        "totalGravada": 52.2,
+        "descuento": 0,
+        "porcentajeDescuento": 0,
+        "totalDescu": 0,
+        "seguro": 0,
+        "flete": 0,
+        "montoTotalOperacion": 52.2,
+        "totalNoGravado": 0,
+        "totalPagar": 52.2,
+        "totalLetras": "CINCUENTA Y DOS 20/100 DÓLARES",
+        "condicionOperacion": 2,
+        "pagos": [
+            {
+                "codigo": "05",
+                "montoPago": 52.2,
+                "referencia": "Transferencia Bancaria",
+                "plazo": "01",
+                "periodo": 30
+            }
+        ],
+        "codIncoterms": null,
+        "descIncoterms": null,
+        "numPagoElectronico": null,
+        "observaciones": null
+    },
+    "apendice": null
+}
