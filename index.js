@@ -1,6 +1,6 @@
 import readline from 'readline';
 import login from './login.js';
-import { ccfTest, facturaExportacionTest, facturaTest, notaCreditoTest, notaDebitoTest, sujetoExcluidoTest } from './documents.js';
+import { anulacionTest, ccfTest, contingenciaTest, facturaExportacionTest, facturaTest, notaCreditoTest, notaDebitoTest, sujetoExcluidoTest } from './documents.js';
 
 // Configurar interfaz de readline para entrada de usuario
 const rl = readline.createInterface({
@@ -140,12 +140,16 @@ async function pruebasAnulaciones() {
         nombre: 'Anulaciones'
     };
     
-    // Función temporal hasta implementar anulacionesTest
-    const anulacionesTest = async (token, numeroIteracion) => {
-        return `Anulaciones ${numeroIteracion} - Funcionalidad pendiente de implementar`;
+    await ejecutarPruebas(tipoDocumento, anulacionTest, true);
+}
+
+async function pruebasContingencias() {
+    const tipoDocumento = {
+        emoji: '🔄',
+        nombre: 'Contingencias'
     };
     
-    await ejecutarPruebas(tipoDocumento, anulacionesTest, false);
+    await ejecutarPruebas(tipoDocumento, contingenciaTest, true);
 }
 
 // Función para pausar y esperar entrada del usuario
@@ -176,6 +180,7 @@ function mostrarMenu() {
     console.log('║  6. 🌍 Pruebas de Facturas de Exportación                ║');
     console.log('║  7. 👥 Pruebas de Sujetos Excluidos                      ║');
     console.log('║  8. ❌ Pruebas de Anulaciones                             ║');
+    console.log('║  9. 🔄 Pruebas de Contingencia                            ║');
     console.log('║  0. 🚪 Salir                                              ║');
     console.log('║                                                           ║');
     console.log('╚═══════════════════════════════════════════════════════════╝');
@@ -208,6 +213,9 @@ async function procesarOpcion(opcion) {
             break;
         case '8':
             await pruebasAnulaciones();
+            break;
+        case '9':
+            await pruebasContingencias();
             break;
         case '0':
             console.log('\n👋 ¡Gracias por usar FESOFT Runner!');

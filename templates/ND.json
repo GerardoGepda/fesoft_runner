@@ -35,9 +35,7 @@
             "complemento": "DIRECCION"
         },
         "telefono": "22222222",
-        "correo": "facturacionelectronica@example.com.sv",
-        "codEstableMH": null,
-        "codPuntoVentaMH": null
+        "correo": "facturacionelectronica@example.com.sv"
     },
     "receptor": {
         "nit": null,

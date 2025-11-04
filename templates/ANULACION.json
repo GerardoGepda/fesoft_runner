@@ -1,0 +1,43 @@
+{
+    "identificacion": {
+        "version": 2,
+        "ambiente": "00",
+        "codigoGeneracion": null,
+        "fecAnula": null,
+        "horAnula": null
+    },
+    "emisor": {
+        "nit": null,
+        "nombre": null,
+        "tipoEstablecimiento": "02",
+        "nomEstablecimiento": null,
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com",
+        "codEstable": null,
+        "codPuntoVenta": null
+    },
+    "documento": {
+        "tipoDte": null,
+        "codigoGeneracion": null,
+        "selloRecibido": null,
+        "numeroControl": null,
+        "fecEmi": null,
+        "montoIva": null,
+        "codigoGeneracionR": null,
+        "tipoDocumento": null,
+        "numDocumento": null,
+        "nombre": null,
+        "telefono": null,
+        "correo": null
+    },
+    "motivo": {
+        "tipoAnulacion": 2, 
+        "motivoAnulacion": null,
+        "nombreResponsable": "Ana Castillo",
+        "tipDocResponsable": "13",
+        "numDocResponsable": "012345678",
+        "nombreSolicita": "Juan Pérez",
+        "tipDocSolicita": "13",
+        "numDocSolicita": "098765432"
+    }
+}

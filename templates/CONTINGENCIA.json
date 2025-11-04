@@ -1,0 +1,30 @@
+{
+    "identificacion": {
+        "version": 3,
+        "ambiente": "00",
+        "fTransmision": null,
+        "hTransmision": null,
+        "codigoGeneracion": null
+    },
+    "emisor": {
+        "nit": null,
+        "nombre": null,
+        "nombreResponsable": "RESPONSABLE",
+        "tipoDocResponsable": "37",
+        "numeroDocResponsable": "00001",
+        "tipoEstablecimiento": "01",
+        "codEstableMH": null,
+        "codPuntoVenta": null,
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com"
+    },
+    "detalleDTE": null,
+    "motivo": {
+        "fInicio": null,
+        "fFin": null,
+        "hInicio": null,
+        "hFin": null,
+        "tipoContingencia": 2,
+        "motivoContingencia": "Bad request"
+    }
+}

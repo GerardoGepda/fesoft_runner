@@ -11,12 +11,12 @@ dotenv.config();
 export default async function login() {
     try {
         // Validar que existan las variables de entorno necesarias
-        const apiUrl = process.env.FESOFT_API_URL;
-        const user = process.env.FESOFT_USER;
-        const password = process.env.FESOFT_PASSWORD;
+        const apiUrl = process.env.MH_URL;
+        const user = process.env.NIT;
+        const pwd = process.env.API_PASSWORD;
 
-        if (!apiUrl || !user || !password) {
-            throw new Error('❌ Faltan variables de entorno: FESOFT_API_URL, FESOFT_USER, FESOFT_PASSWORD');
+        if (!apiUrl || !user || !pwd) {
+            throw new Error('❌ Faltan variables de entorno: MH_URL, NIT, API_PASSWORD');
         }
 
         console.log('🔐 Iniciando proceso de login...');
@@ -24,23 +24,19 @@ export default async function login() {
         console.log(`👤 Usuario: ${user}`);
 
         // Configurar la petición de login
-        const loginData = {
-            email: user,
-            password: password
-        };
+        const loginData = { user, pwd };
 
         // Realizar petición POST al endpoint de login
-        const response = await axios.post(`${apiUrl}/auth`, loginData, {
+        const response = await axios.post(`${apiUrl}/seguridad/auth`, loginData, {
             headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': 'application/x-www-form-urlencoded',
             },
             timeout: 10000 // Timeout de 10 segundos
         });
 
         // Verificar que la respuesta sea exitosa
         if (response.status === 200 && response.data) {
-            const token = response.data.token || response.data.access_token || response.data.accessToken;
+            const token = response.data.body.token;
             
             if (token) {
                 console.log('✅ Login exitoso');
@@ -72,84 +68,5 @@ export default async function login() {
     }
 }
 
-/**
- * Función para validar si un token sigue siendo válido
- * @param {string} token - Token a validar
- * @returns {Promise<boolean>} True si el token es válido
- */
-async function validateToken(token) {
-    try {
-        const apiUrl = process.env.FESOFT_API_URL;
-        
-        const response = await axios.get(`${apiUrl}/auth/validate`, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json'
-            },
-            timeout: 5000
-        });
-
-        return response.status === 200;
-    } catch (error) {
-        console.log('⚠️  Token inválido o expirado');
-        return false;
-    }
-}
-
-/**
- * Función para hacer logout (opcional)
- * @param {string} token - Token de autenticación
- * @returns {Promise<boolean>} True si el logout fue exitoso
- */
-async function logout(token) {
-    try {
-        const apiUrl = process.env.FESOFT_API_URL;
-        
-        const response = await axios.post(`${apiUrl}/auth/logout`, {}, {
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Accept': 'application/json'
-            },
-            timeout: 5000
-        });
-
-        if (response.status === 200) {
-            console.log('✅ Logout exitoso');
-            return true;
-        }
-        return false;
-    } catch (error) {
-        console.error('❌ Error en logout:', error.message);
-        return false;
-    }
-}
-
-/**
- * Función de prueba para el sistema de login
- */
-async function testLogin() {
-    try {
-        console.log('🧪 Iniciando pruebas de login...\n');
-        
-        // Realizar login
-        const token = await login();
-        
-        if (token) {
-            console.log('✅ Test de login: EXITOSO');
-            
-            // Validar token (opcional)
-            console.log('\n🔍 Validando token...');
-            const isValid = await validateToken(token);
-            console.log(`✅ Test de validación: ${isValid ? 'EXITOSO' : 'FALLIDO'}`);
-            
-            return token;
-        }
-    } catch (error) {
-        console.error('❌ Test de login: FALLIDO');
-        console.error('📄 Error:', error.message);
-        throw error;
-    }
-}
-
 // Exportar funciones
-export { login, validateToken, logout, testLogin };
+export { login };
