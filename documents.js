@@ -98,14 +98,14 @@ function aplicarDatosEmpresaContingencia(template) {
  */
 function aplicarDatosReceptor(template) {
     // Datos del receptor desde .env
-    template.receptor.nit = "035706055";
-    template.receptor.nrc = process.env.EMPRESA_NRC || null;
-    template.receptor.nombre = process.env.EMPRESA_NOMBRE || null;
-    template.receptor.codActividad = process.env.EMPRESA_CODACTIVIDAD || null;
-    template.receptor.descActividad = process.env.EMPRESA_CODACTIVIDAD || null;
-    template.receptor.nombreComercial = process.env.EMPRESA_NOMBRE || null;
-    template.receptor.direccion.departamento = process.env.EMPRESA_DEPARTAMENTO || null;
-    template.receptor.direccion.municipio = process.env.EMPRESA_MUNICIPIO || null;
+    template.receptor.nit = process.env.RECEPTOR_NIT;
+    template.receptor.nrc = process.env.RECEPTOR_NRC;
+    template.receptor.nombre = process.env.RECEPTOR_NOMBRE;
+    template.receptor.codActividad = process.env.RECEPTOR_CODACTIVIDAD;
+    template.receptor.descActividad = process.env.RECEPTOR_CODACTIVIDAD;
+    template.receptor.nombreComercial = process.env.RECEPTOR_NOMBRE;
+    template.receptor.direccion.departamento = process.env.RECEPTOR_DEPARTAMENTO;
+    template.receptor.direccion.municipio = process.env.RECEPTOR_MUNICIPIO;
     
     return template;
 }
