@@ -1,6 +1,6 @@
 import readline from 'readline';
 import login from './login.js';
-import { anulacionTest, ccfTest, contingenciaTest, facturaExportacionTest, facturaTest, notaCreditoTest, notaDebitoTest, sujetoExcluidoTest } from './documents.js';
+import { anulacionTest, ccfTest, comprobanteRetencionTest, contingenciaTest, donacionTest, facturaExportacionTest, facturaTest, notaCreditoTest, notaDebitoTest, notaRemisionTest, sujetoExcluidoTest } from './documents.js';
 
 // Configurar interfaz de readline para entrada de usuario
 const rl = readline.createInterface({
@@ -84,6 +84,15 @@ async function pruebasCCF() {
     await ejecutarPruebas(tipoDocumento, ccfTest, true);
 }
 
+async function pruebasNotaRemision() {
+    const tipoDocumento = {
+        emoji: '🚚',
+        nombre: 'Nota de Remisión'
+    };
+
+    await ejecutarPruebas(tipoDocumento, notaRemisionTest, true);
+}
+
 async function pruebasNotaCredito() {
     const tipoDocumento = {
         emoji: '💳',
@@ -108,12 +117,7 @@ async function pruebasComprobanteRetencion() {
         nombre: 'Comprobante de Retención'
     };
     
-    // Función temporal hasta implementar comprobanteRetencionTest
-    const comprobanteRetencionTest = async (token, numeroIteracion) => {
-        return `Comprobante de Retención ${numeroIteracion} - Funcionalidad pendiente de implementar`;
-    };
-    
-    await ejecutarPruebas(tipoDocumento, comprobanteRetencionTest, false);
+    await ejecutarPruebas(tipoDocumento, comprobanteRetencionTest, true);
 }
 
 async function pruebasFacturaExportacion() {
@@ -152,6 +156,15 @@ async function pruebasContingencias() {
     await ejecutarPruebas(tipoDocumento, contingenciaTest, true);
 }
 
+async function pruebasDonacion() {
+    const tipoDocumento = {
+        emoji: '🎁',
+        nombre: 'Comprobante de Donación'
+    };
+
+    await ejecutarPruebas(tipoDocumento, donacionTest, true);
+}
+
 // Función para pausar y esperar entrada del usuario
 function pausa() {
     return new Promise((resolve) => {
@@ -181,6 +194,8 @@ function mostrarMenu() {
     console.log('║  7. 👥 Pruebas de Sujetos Excluidos                      ║');
     console.log('║  8. ❌ Pruebas de Anulaciones                             ║');
     console.log('║  9. 🔄 Pruebas de Contingencia                            ║');
+    console.log('║ 10. 🚚 Pruebas de Nota de Remisión                        ║');
+    console.log('║ 11. 🎁 Pruebas de Comprobante de Donación                 ║');
     console.log('║  0. 🚪 Salir                                              ║');
     console.log('║                                                           ║');
     console.log('╚═══════════════════════════════════════════════════════════╝');
@@ -217,12 +232,18 @@ async function procesarOpcion(opcion) {
         case '9':
             await pruebasContingencias();
             break;
+        case '10':
+            await pruebasNotaRemision();
+            break;
+        case '11':
+            await pruebasDonacion();
+            break;
         case '0':
             console.log('\n👋 ¡Gracias por usar FESOFT Runner!');
             console.log('Saliendo del programa...\n');
             return false;
         default:
-            console.log('\n❌ Opción no válida. Por favor, selecciona una opción del 0 al 8.');
+            console.log('\n❌ Opción no válida. Por favor, selecciona una opción del 0 al 11.');
             await pausa();
             break;
     }

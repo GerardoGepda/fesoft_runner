@@ -1,0 +1,95 @@
+{
+    "identificacion": {
+        "version": 1,
+        "ambiente": "00",
+        "tipoDte": "15",
+        "numeroControl": null,
+        "codigoGeneracion": null,
+        "tipoModelo": 1,
+        "tipoOperacion": 1,
+        "fecEmi": null,
+        "horEmi": null,
+        "tipoMoneda": "USD"
+    },
+    "donatario": {
+        "tipoDocumento": "36",
+        "numDocumento": null,
+        "nrc": null,
+        "nombre": null,
+        "codActividad": null,
+        "descActividad": null,
+        "nombreComercial": null,
+        "tipoEstablecimiento": "01",
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "DIRECCION"
+        },
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com.sv",
+        "codEstableMH": null,
+        "codEstable": null,
+        "codPuntoVentaMH": null,
+        "codPuntoVenta": null
+    },
+    "donante": {
+        "tipoDocumento": "37",
+        "numDocumento": "12345678",
+        "nrc": null,
+        "nombre": "DONANTE DE PRUEBA",
+        "codActividad": null,
+        "descActividad": null,
+        "direccion": {
+            "departamento": "06",
+            "municipio": "14",
+            "complemento": "DIRECCION DEL DONANTE"
+        },
+        "telefono": "77777777",
+        "correo": "donante@example.com",
+        "codDomiciliado": 1,
+        "codPais": "SV"
+    },
+    "otrosDocumentos": [
+        {
+            "codDocAsociado": 1,
+            "descDocumento": "COMPROBANTE DE DONACION",
+            "detalleDocumento": "DONACION REGISTRADA CON COMPROBANTE INTERNO N 1"
+        }
+    ],
+    "cuerpoDocumento": [
+        {
+            "numItem": 1,
+            "tipoDonacion": 1,
+            "cantidad": 1,
+            "codigo": null,
+            "uniMedida": 99,
+            "descripcion": "DONACION EN EFECTIVO",
+            "depreciacion": 0,
+            "valorUni": 100,
+            "valor": 100
+        },
+        {
+            "numItem": 2,
+            "tipoDonacion": 2,
+            "cantidad": 10,
+            "codigo": "A00001",
+            "uniMedida": 59,
+            "descripcion": "SILLAS PLASTICAS",
+            "depreciacion": 5,
+            "valorUni": 20,
+            "valor": 195
+        }
+    ],
+    "resumen": {
+        "valorTotal": 295,
+        "totalLetras": "DOSCIENTOS NOVENTA Y CINCO DOLAR/ES 00/100",
+        "pagos": [
+            {
+                "codigo": "01",
+                "montoPago": 295,
+                "referencia": null
+            }
+        ]
+    },
+    "apendice": null
+}

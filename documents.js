@@ -38,7 +38,15 @@ function aplicarDatosEmpresa(template, tipoDocumento = null) {
         delete template.emisor.codEstableMH;
         delete template.emisor.codPuntoVentaMH;
     }
-    
+
+    if (tipoDocumento === 'CR') {
+        // El Comprobante de Retención nombra distinto el establecimiento y el punto de venta
+        template.emisor.codigoMH = template.emisor.codEstableMH;
+        template.emisor.puntoVentaMH = template.emisor.codPuntoVentaMH;
+        delete template.emisor.codEstableMH;
+        delete template.emisor.codPuntoVentaMH;
+    }
+
     return template;
 }
 
@@ -92,13 +100,40 @@ function aplicarDatosEmpresaContingencia(template) {
 }
 
 /**
+ * Función para aplicar datos del .env al template de documento
+ * El Comprobante de Donación nombra "donatario" al emisor y "donante" al receptor
+ * @param {Object} template - Template del documento a modificar
+ * @returns {Object} Template modificado
+ */
+function aplicarDatosEmpresaDonacion(template) {
+    // Número interno generado y datos de identificación
+    template.identificacion.codigoGeneracion = crypto.randomUUID().toUpperCase();
+    template.identificacion.numeroControl = `DTE-${template.identificacion.tipoDte}-${process.env.EMPRESA_ESTABLECIMIENTO}${process.env.EMPRESA_POS}-${Date.now().toString().padStart(15, 0)}`;
+    template.identificacion.fecEmi = dayjs().format('YYYY-MM-DD');
+    template.identificacion.horEmi = dayjs().format('HH:mm:ss');
+
+    // Datos del donatario (emisor) desde .env
+    template.donatario.numDocumento = process.env.EMPRESA_NIT || null;
+    template.donatario.nrc = process.env.EMPRESA_NRC || null;
+    template.donatario.codActividad = process.env.EMPRESA_CODACTIVIDAD || null;
+    template.donatario.descActividad = process.env.EMPRESA_CODACTIVIDAD || null;
+    template.donatario.nombre = process.env.EMPRESA_NOMBRE || null;
+    template.donatario.nombreComercial = process.env.EMPRESA_NOMBRE || null;
+    template.donatario.direccion.departamento = process.env.EMPRESA_DEPARTAMENTO || null;
+    template.donatario.direccion.municipio = process.env.EMPRESA_MUNICIPIO || null;
+    template.donatario.codEstableMH = process.env.EMPRESA_ESTABLECIMIENTO || null;
+    template.donatario.codPuntoVentaMH = process.env.EMPRESA_POS || null;
+
+    return template;
+}
+
+/**
  * Función para aplicar datos del .env al template de documento en el receptor
  * @param {Object} template - Template del documento a modificar
  * @returns {Object} Template modificado
  */
-function aplicarDatosReceptor(template) {
+function aplicarDatosReceptor(template, tipoDocumento = null) {
     // Datos del receptor desde .env
-    template.receptor.nit = process.env.RECEPTOR_NIT;
     template.receptor.nrc = process.env.RECEPTOR_NRC;
     template.receptor.nombre = process.env.RECEPTOR_NOMBRE;
     template.receptor.codActividad = process.env.RECEPTOR_CODACTIVIDAD;
@@ -106,7 +141,14 @@ function aplicarDatosReceptor(template) {
     template.receptor.nombreComercial = process.env.RECEPTOR_NOMBRE;
     template.receptor.direccion.departamento = process.env.RECEPTOR_DEPARTAMENTO;
     template.receptor.direccion.municipio = process.env.RECEPTOR_MUNICIPIO;
-    
+
+    if (['NR', 'CR'].includes(tipoDocumento)) {
+        // Estos documentos identifican al receptor con tipoDocumento/numDocumento, no con nit
+        template.receptor.numDocumento = process.env.RECEPTOR_NIT;
+    } else {
+        template.receptor.nit = process.env.RECEPTOR_NIT;
+    }
+
     return template;
 }
 
@@ -278,6 +320,31 @@ export async function ccfTest(token) {
     };
 }
 
+export async function notaRemisionTest(token) {
+    const data = await fs.readFile('templates/NR.json', 'utf-8');
+    let template = JSON.parse(data);
+
+    // Aplicar datos de la empresa
+    template = aplicarDatosEmpresa(template);
+
+    // Aplicar datos del receptor
+    template = aplicarDatosReceptor(template, 'NR');
+
+    // Enviar documento a la API
+    const response = await enviarDocumentoAPI(template, token);
+
+    // Actualizar template con datos de respuesta
+    template.identificacion.selloRecibido = response?.selloRecibido || null;
+
+    // Guardar documento procesado
+    await guardarDocumento(template, 'NR');
+
+    return {
+        codigoGeneracion: response?.codigoGeneracion || null,
+        selloRecibido: response?.selloRecibido || null
+    };
+}
+
 export async function notaCreditoTest(token) {
     const data = await fs.readFile('templates/NC.json', 'utf-8');
     let template = JSON.parse(data);
@@ -344,6 +411,35 @@ export async function notaDebitoTest(token) {
     };
 }
 
+export async function comprobanteRetencionTest(token) {
+    const data = await fs.readFile('templates/CR.json', 'utf-8');
+    let template = JSON.parse(data);
+
+    // Aplicar datos de la empresa
+    template = aplicarDatosEmpresa(template, 'CR');
+
+    // Aplicar datos del receptor
+    template = aplicarDatosReceptor(template, 'CR');
+
+    // El documento retenido es físico (tipoDoc = 1), se inventa un correlativo distinto por prueba
+    template.cuerpoDocumento[0].numDocumento = Date.now().toString().slice(-11);
+    template.cuerpoDocumento[0].fechaEmision = dayjs().format('YYYY-MM-DD');
+
+    // Enviar documento a la API
+    const response = await enviarDocumentoAPI(template, token);
+
+    // Actualizar template con datos de respuesta
+    template.identificacion.selloRecibido = response?.selloRecibido || null;
+
+    // Guardar documento procesado
+    await guardarDocumento(template, 'CR');
+
+    return {
+        codigoGeneracion: response?.codigoGeneracion || null,
+        selloRecibido: response?.selloRecibido || null
+    };
+}
+
 export async function sujetoExcluidoTest(token) {
     const data = await fs.readFile('templates/SE.json', 'utf-8');
     let template = JSON.parse(data);
@@ -381,6 +477,28 @@ export async function facturaExportacionTest(token) {
 
     // Guardar documento procesado
     await guardarDocumento(template, 'FEX');
+
+    return {
+        codigoGeneracion: response?.codigoGeneracion || null,
+        selloRecibido: response?.selloRecibido || null
+    };
+}
+
+export async function donacionTest(token) {
+    const data = await fs.readFile('templates/CD.json', 'utf-8');
+    let template = JSON.parse(data);
+
+    // Aplicar datos de la empresa
+    template = aplicarDatosEmpresaDonacion(template);
+
+    // Enviar documento a la API
+    const response = await enviarDocumentoAPI(template, token);
+
+    // Actualizar template con datos de respuesta
+    template.identificacion.selloRecibido = response?.selloRecibido || null;
+
+    // Guardar documento procesado
+    await guardarDocumento(template, 'CD');
 
     return {
         codigoGeneracion: response?.codigoGeneracion || null,

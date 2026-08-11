@@ -1,0 +1,72 @@
+{
+    "identificacion": {
+        "version": 1,
+        "ambiente": "00",
+        "tipoDte": "07",
+        "numeroControl": null,
+        "codigoGeneracion": null,
+        "tipoModelo": 1,
+        "tipoOperacion": 1,
+        "tipoContingencia": null,
+        "motivoContin": null,
+        "fecEmi": null,
+        "horEmi": null,
+        "tipoMoneda": "USD"
+    },
+    "emisor": {
+        "nit": null,
+        "nrc": null,
+        "descActividad": null,
+        "codActividad": null,
+        "nombre": null,
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "DIRECCION"
+        },
+        "telefono": "22222222",
+        "correo": "facturacionelectronica@example.com.sv",
+        "nombreComercial": null,
+        "tipoEstablecimiento": "01",
+        "codigoMH": null,
+        "codigo": null,
+        "puntoVentaMH": null,
+        "puntoVenta": null
+    },
+    "receptor": {
+        "tipoDocumento": "36",
+        "numDocumento": null,
+        "nrc": null,
+        "nombre": null,
+        "codActividad": null,
+        "descActividad": null,
+        "nombreComercial": null,
+        "direccion": {
+            "departamento": null,
+            "municipio": null,
+            "complemento": "direccion receptor"
+        },
+        "telefono": "77777777",
+        "correo": "pruebas@example.com"
+    },
+    "cuerpoDocumento": [
+        {
+            "numItem": 1,
+            "tipoDte": "03",
+            "tipoDoc": 1,
+            "numDocumento": null,
+            "fechaEmision": null,
+            "montoSujetoGrav": 1000,
+            "codigoRetencionMH": "22",
+            "ivaRetenido": 10,
+            "descripcion": "RETENCION DE IVA 1%"
+        }
+    ],
+    "resumen": {
+        "totalSujetoRetencion": 1000,
+        "totalIVAretenido": 10,
+        "totalIVAretenidoLetras": "DIEZ DOLAR/ES 00/100"
+    },
+    "extension": null,
+    "apendice": null
+}
